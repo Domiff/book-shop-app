@@ -1,0 +1,178 @@
+:root {
+  --bg-color: #fdf8f3;
+  --card-bg: #ffffff;
+  --primary-color: #7b4b24;
+  --accent-color: #d4a373;
+  --text-color: #333;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: 0.3s ease-in-out;
+  --font-stack: "Georgia", serif;
+}
+
+/* ===== Основные стили ===== */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-stack);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ===== Шапка ===== */
+header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1.5rem 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===== Навигация ===== */
+nav {
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  padding: 0.8rem 0;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  display: block;
+}
+
+nav ul li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 16px;
+  background-color: #f5ebe0;
+  font-family: 'Georgia', serif;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  user-select: none;
+  cursor: pointer;
+}
+
+nav ul li a:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ===== Контейнер карточек книг ===== */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Центрируем карточки */
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.container a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ===== Карточка книги ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+  width: 280px;        /* фиксированная ширина */
+  height: 340px;       /* фиксированная высота */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок внутри карточки */
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* если текст длинный — обрезаем и показываем многоточие */
+}
+
+/* Обложка книги (если используется) */
+.card-content img {
+  width: 40%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+/* Контент карточки */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* Цена */
+.card .price {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* Кнопка */
+button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+button:hover {
+  background: #b97c4c;
+}
+
+/* ===== Подвал ===== */
+footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
