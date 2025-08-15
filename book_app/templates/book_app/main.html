@@ -11,9 +11,13 @@
             {% if user.is_staff%}
                 <li><a href="{% url 'book_app:create' %}">Добавить новую книгу</a></li>
             {% endif %}
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'auth_app:logout' %}">Выйти из профиля</a></li>
+            {% else %}
+                <li><a href="{% url 'auth_app:register' %}">Зарегистрироваться или войти</a></li>
+            {% endif %}
         </ul>
     </nav>
-<!--    <h1>Главная</h1>-->
     <h1>Добро пожаловать в книжный интернет магазин</h1>
 
     <form method="get">

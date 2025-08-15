@@ -8,9 +8,14 @@
     <nav>
         <ul>
             <li><a href="{% url 'book_app:books' %}">Вернуться к списку книг</a></li>
-            {% if user.is_staff %}
-                <li><a href="{% url 'book_app:delete' pk=book.pk %}">Удалить книгу</a></li>
-                <li><a href="{% url 'book_app:update' pk=book.pk %}">Обновить данные о книге</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'auth_app:logout' %}">Выйти из профиля</a></li>
+                {% if user.is_staff %}
+                    <li><a href="{% url 'book_app:delete' pk=book.pk %}">Удалить книгу</a></li>
+                    <li><a href="{% url 'book_app:update' pk=book.pk %}">Обновить данные о книге</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{% url 'auth_app:register' %}">Зарегистрироваться или войти</a></li>
             {% endif %}
         </ul>
     </nav>
