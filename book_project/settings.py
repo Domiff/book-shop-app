@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
 
     "book_app.apps.BookAppConfig",
     "book_api.apps.BookApiConfig",
+    "auth_app.apps.AuthAppConfig",
 ]
 
 MIDDLEWARE = [
@@ -125,6 +128,10 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_URL = "upload/"
 MEDIA_ROOT = BASE_DIR / "uploads"
 
+LOGIN_URL = reverse_lazy("book_app:main")
+
+LOGIN_REDIRECT_URL = "/shop"
+LOGOUT_REDIRECT_URL = reverse_lazy("book_app:main")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
