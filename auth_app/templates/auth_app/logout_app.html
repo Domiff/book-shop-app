@@ -1,0 +1,20 @@
+ {% extends "book_app/base.html" %}
+
+{% block title %}
+    Выход из профиля
+{% endblock title %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'book_app:main' %}">Вернуться назад</a></li>
+        </ul>
+    </nav>
+
+    <h1>Вы уверены, что хотите выйти?</h1>
+
+    <form method="post" action="{% url 'auth_app:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Выйти из профиля</button>
+    </form>
+{% endblock body %}
