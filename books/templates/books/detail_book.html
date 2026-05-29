@@ -1,0 +1,36 @@
+{% extends "books/base.html" %}
+
+{% block title %}
+    Книга {{ book.title }}
+{% endblock title %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'books:books' %}">Вернуться к списку книг</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'auth_user:logout' %}">Выйти из профиля</a></li>
+                {% if user.is_staff %}
+                    <li><a href="{% url 'books:delete' pk=book.pk %}">Удалить книгу</a></li>
+                    <li><a href="{% url 'books:update' pk=book.pk %}">Обновить данные о книге</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{% url 'auth_user:register' %}">Зарегистрироваться или войти</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="card-content">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.description }}</p>
+            <p>Дата публикации: {{ book.published }} </p>
+            <p class="price">{{ book.price }}</p>
+            <img src="{{ book.preview.url }}" alt="{{ book.preview.name }}">
+            <div>
+            {% for author in book.author.all %}
+                <p>Автор книги: {{ author }}</p>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

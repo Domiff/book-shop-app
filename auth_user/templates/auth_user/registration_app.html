@@ -1,0 +1,25 @@
+{% extends 'books/base.html' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'books:main' %}">Вернуться на главную</a>
+            </li>
+        </ul>
+    </nav>
+    <h1>Регистрация</h1>
+        <div>
+            <h2>Если у вас есть аккаунт, вы можете войти с него</h2>
+            <a href="{% url 'auth_user:login' %}">Войти в профиль</a>
+        </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистроваться</button>
+    </form>
+{% endblock %}

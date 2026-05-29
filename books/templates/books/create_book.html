@@ -1,0 +1,21 @@
+{% extends "books/base.html" %}
+
+{% block title %}
+    Добавление новой книги
+{% endblock title %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'books:books' %}">Вернуться к списку книг</a></li>
+        </ul>           
+    </nav>
+    <h2>Добавление новой книги</h2>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Добавить книгу</button>
+        </form>
+    </div>
+{% endblock body %}

@@ -1,0 +1,42 @@
+{% extends "books/base.html" %}
+
+{% block title %}
+    Список книг
+{% endblock title %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{% url 'books:main' %}">Вернуться на главную</a></li>
+            {% if user.is_authenticated %}
+                {% if user.is_staff%}
+                <li><a href="{% url 'books:create' %}">Добавить новую книгу</a></li>
+                {% endif %}
+                <li><a href="{% url 'auth_user:logout' %}">Выйти из профиля</a></li>
+            {% else %}
+                <li><a href="{% url 'auth_user:register' %}">Зарегистрироваться или войти</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <h1>Список книг</h1>
+    {% if books %}
+        <div class="container">
+                {% for book in books %}
+                    <a href="{% url 'books:book' pk=book.pk %}">
+                        <div class="card">
+                            <h3>{{book.title}}</h3>
+                            <p>{{book.description}}</p>
+                            <p>Дата публикации: {{book.published}}</p>                             
+                            <div>
+                                {% for author in book.author.all %}
+                                <p>Автор книги: {{ author }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+        </div>
+    {% else %}
+        <h2>Книги пока что не добавлены</h2>
+    {% endif %}
+{% endblock body %}

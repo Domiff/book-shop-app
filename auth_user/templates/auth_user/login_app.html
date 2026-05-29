@@ -1,0 +1,22 @@
+{% extends 'books/base.html' %}
+
+
+{% block title %}
+    Вход в систему
+{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'books:main' %}">Вернуться на главную</a>
+            </li>
+        </ul>
+    </nav>
+    <h1>Вход в систему</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+{% endblock %}
