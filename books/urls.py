@@ -2,10 +2,10 @@ from django.urls import path
 
 from .views import (
     BookSearchView,
-    ListBookView,
-    DetailBookView,
-    DeleteBookView,
     CreateBookView,
+    DeleteBookView,
+    DetailBookView,
+    ListBookView,
     UpdateBookView,
 )
 

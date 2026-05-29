@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea, Form, CharField
+from django.forms import CharField, Form, ModelForm, Textarea
 
 from .models import Book
 
@@ -33,4 +33,4 @@ class UpdateBookForm(ModelForm):
 
 
 class SearchBookForm(Form):
-    query = CharField(label='Поиск', required=False)
+    query = CharField(label="Поиск", required=False)
