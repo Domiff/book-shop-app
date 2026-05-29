@@ -100,6 +100,9 @@ When `DEBUG=True`, the app uses SQLite. When `DEBUG=False`, it connects to Postg
 
 ## Development
 
+[just](https://github.com/casey/just): `just run`, `just migrate`, `just lint`, `just format`.
+
 ```bash
-uv run black .
+uv sync --dev
+uv run pre-commit install
 ```
